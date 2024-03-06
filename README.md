@@ -55,6 +55,11 @@
   + Update README.md
 
 ## <center>Add responsive design</center>
-- CSS code review for mobile first responsive design:
+- CSS code review for mobile first responsive design.
+
+## <center>Code review #1</center>
+- remove unused function & tailwind class
+- code review for improve readability
+- update README.md
 
 last update 6 march 2024

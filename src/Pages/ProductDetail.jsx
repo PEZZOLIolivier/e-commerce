@@ -23,7 +23,6 @@ const ProductDetail = () => {
         }))
     };
 
-
     const notify = () => {
         toast('Added to the cart!', {
             icon: '🛒',
@@ -84,10 +83,10 @@ const ProductDetail = () => {
                             </div>
                             <button type="button"
                                     onClick={handleAddToCart}
-                                    className="mx-auto min-w-[200px] px-4 my-2 py-2 border border-teal-700 bg-transparent hover:bg-teal-700 hover:text-gray-100 text-teal-700 text-sm font-bold rounded z-10"
+                                    className="mx-auto px-4 my-2 py-2 min-w-[200px] border border-teal-700 bg-transparent text-teal-700 text-sm font-bold
+                                               rounded z-10 hover:bg-teal-700 hover:text-gray-100"
                             >
                                 Add To Cart
-                                
                             </button>
                         </div>
                     </div>
@@ -98,7 +97,8 @@ const ProductDetail = () => {
                     <div className="flex flex-col items-center">
                         <button
                             type="button"
-                            className="ml-5 min-w-1/2 px-4 my-2 py-2 border border-teal-700 bg-teal-700 hover:bg-gray-100 hover:text-teal-700 text-gray-100 text-sm font-bold rounded z-10"
+                            className="ml-5 px-4 my-2 py-2 min-w-1/2 border border-teal-700 bg-teal-700 text-sm font-bold rounded z-10 hover:bg-gray-100
+                                       hover:text-teal-700 text-gray-100"
                         >
                             Continue Shopping
                         </button>
@@ -106,10 +106,7 @@ const ProductDetail = () => {
                 </Link>
             </div>
 
-            <Toaster
-                position="bottom-center"
-                reverseOrder={false}
-            />
+            <Toaster position="bottom-center" reverseOrder={false} />
         </div>
     )
 

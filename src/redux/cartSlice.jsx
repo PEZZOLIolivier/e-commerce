@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const fetchFromLocalStorage = () => {
     let cart = localStorage.getItem('cart');
     if (cart) {
@@ -13,7 +12,6 @@ const fetchFromLocalStorage = () => {
 const storeInLocalStorage = (data) => {
     localStorage.setItem('cart', JSON.stringify(data))
 }
-
 
 const initialState = {
     carts: fetchFromLocalStorage(),
@@ -42,7 +40,6 @@ const cartSlice = createSlice({
                 state.carts.push(action.payload);
             }
             storeInLocalStorage(state.carts);
-            // Dispatch the getCartTotal action after updating the cart
             state.itemCount = state.carts.reduce((totalQuantity, cartItem) => {
                 return totalQuantity + cartItem.quantity;
             }, 0);

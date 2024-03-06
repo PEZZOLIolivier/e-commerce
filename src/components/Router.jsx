@@ -11,7 +11,6 @@ const Router = () => {
             <Routes>
                 <Route path="/" element={<Header />}>
                     <Route index element={<Home />} />
-                    {/* Add a route for the product detail page */}
                     <Route path="products/:id" element={<ProductDetail />} />
                     <Route path="/cart" element={<Cart />} />
                 </Route>

@@ -72,18 +72,6 @@ const productSlice = createSlice({
             })
     }
 })
-
 export const { setSearchQuery } = productSlice.actions;
-
-export const getSearch = createAsyncThunk(
-    "products/get",
-    async ({ page, searchQuery }) => {
-        const data = await fetch(
-            `https://fakestoreapi.com/products?limit=20&page=${page}&title=${searchQuery}`
-        );
-        const result = await data.json();
-        return result;
-    }
-);
 
 export default productSlice.reducer;
