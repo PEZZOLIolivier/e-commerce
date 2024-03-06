@@ -19,11 +19,12 @@ function Category() {
     };
 
     return (
-        <div className="text-center text-gray-100 text-xs bg-gradient-to-r from-teal-500 via-teal-500 to-teal-700 font-medium justify-center items-center mb-5 px-2 rounded-b-xl flex">
-            <ul className="flex">
+
+        <div className="w-full text-center text-gray-100 text-xs bg-gradient-to-r from-teal-500 via-teal-500 to-teal-700 font-medium justify-center items-center mb-5 pb-2 rounded-b-xl flex relative">
+            <ul className="text-xs md:text-md xl:text-lg grid grid-cols-2 md:grid-cols-5">
                 <li
                     onClick={() => handleCategoryClick(null)}
-                    className={`uppercase mx-10 pb-2 mt-0 m-1 mx-5 px-5 hover:cursor-pointer hover:animate-pulse hover:text-teal-700 hover:bg-gray-100 hover:rounded-b-lg hover:shadow-lg ${
+                    className={`block uppercase pb-2 md:inline-block md:mx-5 md:px-3 hover:cursor-pointer hover:animate-pulse hover:text-teal-700 hover:bg-gray-100 hover:rounded-b-lg hover:shadow-lg  ${
                         selectedCategory === null ? "text-gray-100 underline" : ""
                     }`}
                     key="all"
@@ -33,7 +34,7 @@ function Category() {
                 {categories?.map((category, index) => (
                     <li
                         onClick={() => handleCategoryClick(category)}
-                        className={`uppercase mx-10 pb-2 mt-0 m-1 mx-5 px-5 hover:cursor-pointer hover:animate-pulse hover:text-teal-700 hover:bg-gray-100 hover:rounded-b-lg hover:shadow-lg ${
+                        className={`block md:inline-block md:mx-5 md:px-3 uppercase pb-2 mx-1 hover:cursor-pointer hover:animate-pulse hover:text-teal-700 hover:bg-gray-100 hover:rounded-b-lg hover:shadow-lg ${
                             category === selectedCategory ? "text-gray-100 underline" : ""
                         }`}
                         key={index}
@@ -45,4 +46,5 @@ function Category() {
         </div>
     );
 }
+
 export default Category;

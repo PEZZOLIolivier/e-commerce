@@ -1,29 +1,61 @@
-import { removeFromCart } from '../redux/cartSlice';
-import { useDispatch } from 'react-redux';
-import { CgClose } from 'react-icons/cg';
+import {addToCart, removeFromCart} from '../redux/cartSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import { FaTrash } from 'react-icons/fa';
 
-const CartComp = ({ cart }) => {
+const CartCpt = ({cart}) => {
     const dispatch = useDispatch();
+    const cartInStore = useSelector(state => state.cart.carts.find(item => item.id === cart.id));
+
+    const handleDecrement = () => {
+        if (cartInStore.quantity > 1) {
+            dispatch(addToCart({ ...cartInStore, quantity: cartInStore.quantity - 1 }));
+        } else {
+            dispatch(removeFromCart(cart.id));
+        }
+    };
+
+    const handleIncrement = () => {
+        dispatch(addToCart({ ...cartInStore, quantity: cartInStore.quantity + 1 }));
+    };
 
     return (
-        <div className="font-nunito mx-auto justify-center px-6 md:flex md:space-x-6 xl:px-0 rounded-lg">
-            <div className="w-90 md:w-[950px] bg-white border border-gray-200 rounded-lg shadow mb-7 p-5">
-                <div className="justify-between sm:flex sm:justify-start">
-                    <img src={cart.image} alt="product" className="w-full rounded-lg sm:w-40" />
-                    <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between pt-6 sm:mt-0">
-                        <h2 className="text-xl font-bold text-gray-900">{cart.title}</h2>
+
+    <table className="table-fixed w-96 md:w-full md:my-2">
+        <tbody className="p-1">
+        <tr className="">
+            <td className="hidden md:block">
+                    <img src={cart.image} alt="product" className="h-auto max-w-full xl:max-h-[10vh]"/>
+                </td>
+                <td className="w-[45vw] ">
+                    <h2 className="text-xs text-left font-semibold truncate ... md:text-lg md:font-bold">{cart.title}</h2>
+                </td>
+                <td className="">
+                    <p className="px-1 text-xs text-right w-[10vw] md:text-lg">${cart.price}</p>
+                </td>
+                <td className="w-[10vw]">
+                    <div className="flex items-center justify-center text-xs md:text-lg">
+                        <button onClick={handleDecrement}
+                                className="mx-1 px-1 rounded border-teal-700 border-2 bg-teal-700 text-gray-100 hover:bg-gray-100 hover:text-teal-700">-
+                        </button>
+                        <span className="mx-1">{cartInStore.quantity}</span>
+                        <button onClick={handleIncrement}
+                                className="mx-1 px-1 rounded border-teal-700 border-2 bg-teal-700 text-gray-100 hover:bg-gray-100 hover:text-teal-700">+
+                        </button>
                     </div>
-                    <div className="mt-5 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-                        <div className="flex items-center justify-between space-x-24 pt-6">
-                            <p className="text-lg font-bold text-thirdColor">${cart.price}</p>
-                            <p className="text-lg font-bold text-thirdColor">({cart.quantity})</p>
-                            <CgClose onClick={() => dispatch(removeFromCart(cart.id))} className="h-7 w-7 cursor-pointer duration-150 hover:text-red-700" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div >
-    )
+                </td>
+                <td className="w-[15vw] text-xs text-right md:text-lg md:font-semibold">
+                    ${cart.price * cartInStore.quantity }
+                </td>
+                <td className="w-[5vw] px-1 text-xs md:text-lg md:px-3">
+                    <FaTrash onClick={() => dispatch(removeFromCart(cart.id))}
+                             className="text-red-700"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+)
 }
 
-export default CartComp;
+export default CartCpt;

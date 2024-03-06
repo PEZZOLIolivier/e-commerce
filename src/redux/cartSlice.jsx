@@ -33,7 +33,7 @@ const cartSlice = createSlice({
                     item.id === action.payload.id
                         ? {
                             ...item,
-                            quantity: item.quantity + action.payload.quantity,
+                            quantity: action.payload.quantity,
                             totalPrice: item.totalPrice + action.payload.price,
                         }
                         : item

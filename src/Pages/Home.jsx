@@ -34,9 +34,12 @@ const Home = () => {
     console.log("Products : ", products);
 
     return (
-        <div className="">
+
+
+
+        <div>
             <Category />
-            <div className="grid grid-cols-4 relative container mx-auto mb-10">
+            <div className="px-3 grid lg:grid-cols-3 xl:grid-cols-4 relative container mx-auto mb-10 grid-cols-1 md:grid-cols-2">
                 {filteredProducts.map((product) => (
                         <Link key={product.id}
                               to={`/products/${product.id}`}

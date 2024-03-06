@@ -18,6 +18,7 @@ const ProductDetail = () => {
             title: productDetail.title,
             image: productDetail.image,
             price: productDetail.price,
+            description: productDetail.description,
             quantity: amount
         }))
     };
@@ -47,10 +48,10 @@ const ProductDetail = () => {
     }
 
     return (
-        <div className="font-[sans-serif] bg-white text-teal-700 my-5">
+        <div className="font-[sans-serif] bg-white text-teal-700 my-5 mb-10">
             <div className="p-6 lg:max-w-7xl max-w-4xl mx-auto">
                 <div className="grid items-start grid-cols-1 lg:grid-cols-5 gap-12 shadow-lg p-6 rounded-lg bg-gray-100">
-                    <div className="lg:col-span-3 max-w-96 lg:sticky top-0 text-center">
+                    <div className="lg:col-span-3 max-w-96 top-0 text-center md:items-center md:mx-auto">
                         <div className="px-4 py-10 rounded-xl shadow-lg relative bg-white">
                             <img src={productDetail.image} alt={productDetail.title} className="rounded object-cover"/>
                         </div>
@@ -62,17 +63,17 @@ const ProductDetail = () => {
                             <p className="text-sm italic">{productDetail.description}</p>
                         </div>
                         <div className="flex space-x-2 mt-4">
-                            <h4 className="text-[#333] text-base">
+                            <h4 className="text-[#333] text-base mx-auto">
                                 <Box sx={{'& > legend': {mt: 2}}} className="text-center">
                                     <Rating name="read-only" value={productDetail.rating.rate} precision={0.1} readOnly/>
                                 </Box>
                             </h4>
                         </div>
                         <div className="flex flex-wrap gap-4 mt-6">
-                            <p className="text-4xl font-bold">${productDetail.price}</p>
+                            <p className="text-4xl font-bold mx-auto">${productDetail.price}</p>
                         </div>
                         <div className="flex flex-wrap">
-                            <div className='flex flex-row items-center'>
+                            <div className='flex flex-row items-center mx-auto'>
                                 <button className='bg-gray-200 py-2 px-5 rounded-lg text-teal-700 text-2xl'
                                         onClick={() => setAmount((prev) => prev - 1)}>-
                                 </button>
@@ -83,7 +84,7 @@ const ProductDetail = () => {
                             </div>
                             <button type="button"
                                     onClick={handleAddToCart}
-                                    className="ml-5 min-w-[200px] px-4 my-2 py-2 border border-teal-700 bg-transparent hover:bg-teal-700 hover:text-gray-100 text-teal-700 text-sm font-bold rounded z-10"
+                                    className="mx-auto min-w-[200px] px-4 my-2 py-2 border border-teal-700 bg-transparent hover:bg-teal-700 hover:text-gray-100 text-teal-700 text-sm font-bold rounded z-10"
                             >
                                 Add To Cart
                                 
